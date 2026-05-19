@@ -1,0 +1,14 @@
+{
+  "name": "betag",
+  "version": "1.0.0",
+  "description": "BETAG - NFC Anti-Counterfeiting Label Service",
+  "main": "src/worker.js",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "build": "echo 'No build step required for Workers'"
+  },
+  "devDependencies": {
+    "wrangler": "^3.0.0"
+  }
+}
