@@ -13,7 +13,6 @@ export async function handleVerifyAPI(request, env, corsHeaders) {
     }
 
     const sanitizedCode = code.trim().toUpperCase();
-
     const supabaseUrl = env.SUPABASE_URL;
     const supabaseKey = env.SUPABASE_ANON_KEY;
 
@@ -24,7 +23,6 @@ export async function handleVerifyAPI(request, env, corsHeaders) {
       );
     }
 
-    // Query Supabase REST API
     const queryUrl = `${supabaseUrl}/rest/v1/nfc_labels?select=*&code=eq.${encodeURIComponent(sanitizedCode)}&limit=1`;
 
     const supabaseRes = await fetch(queryUrl, {
@@ -50,7 +48,6 @@ export async function handleVerifyAPI(request, env, corsHeaders) {
     if (data && data.length > 0) {
       const label = data[0];
 
-      // Optional: update scan count and last_scanned_at
       await fetch(`${supabaseUrl}/rest/v1/nfc_labels?code=eq.${encodeURIComponent(sanitizedCode)}`, {
         method: 'PATCH',
         headers: {
@@ -91,5 +88,4 @@ export async function handleVerifyAPI(request, env, corsHeaders) {
       { status: 500, headers: { 'Content-Type': 'application/json', ...corsHeaders } }
     );
   }
-}
 }
