@@ -23,13 +23,13 @@ export async function handleVerifyAPI(request, env, corsHeaders) {
       );
     }
 
-    const queryUrl = `${supabaseUrl}/rest/v1/nfc_labels?select=*&code=eq.${encodeURIComponent(sanitizedCode)}&limit=1`;
+    const queryUrl = supabaseUrl + '/rest/v1/nfc_labels?select=*&code=eq.' + encodeURIComponent(sanitizedCode) + '&limit=1';
 
     const supabaseRes = await fetch(queryUrl, {
       method: 'GET',
       headers: {
         'apikey': supabaseKey,
-        'Authorization': `Bearer ${supabaseKey}`,
+        'Authorization': 'Bearer ' + supabaseKey,
         'Content-Type': 'application/json',
       },
     });
@@ -48,11 +48,11 @@ export async function handleVerifyAPI(request, env, corsHeaders) {
     if (data && data.length > 0) {
       const label = data[0];
 
-      await fetch(`${supabaseUrl}/rest/v1/nfc_labels?code=eq.${encodeURIComponent(sanitizedCode)}`, {
+      await fetch(supabaseUrl + '/rest/v1/nfc_labels?code=eq.' + encodeURIComponent(sanitizedCode), {
         method: 'PATCH',
         headers: {
           'apikey': supabaseKey,
-          'Authorization': `Bearer ${supabaseKey}`,
+          'Authorization': 'Bearer ' + supabaseKey,
           'Content-Type': 'application/json',
           'Prefer': 'return=minimal',
         },
@@ -68,10 +68,11 @@ export async function handleVerifyAPI(request, env, corsHeaders) {
           code: sanitizedCode,
           product_name: label.product_name || null,
           manufacturer: label.manufacturer || null,
-          issued_at: label.issued_at || null,
           serial_number: label.serial_number || null,
           manufactured_at: label.manufactured_at || null,
-          scan_count: (label.scan_count || 0) + 1,
+          origin_country: label.origin_country || null,
+          expires_at: label.expires_at || null,
+          issued_at: label.issued_at || null,
         }),
         { headers: { 'Content-Type': 'application/json', ...corsHeaders } }
       );
