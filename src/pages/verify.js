@@ -676,14 +676,14 @@ const langMeta = {
   ar: { flag: '🇸🇦', code: 'AR' },
   fr: { flag: '🇫🇷', code: 'FR' },
 };
-let currentLang = localStorage.getItem('TAGR_lang') || 'en';
+let currentLang = localStorage.getItem('tagr_lang') || 'en';
 
 function t(key) { return (i18n[currentLang] && i18n[currentLang][key]) || key; }
 
 function applyLang(lang) {
   if (!i18n[lang]) return;
   currentLang = lang;
-  localStorage.setItem('TAGR_lang', lang);
+  localStorage.setItem('tagr_lang', lang);
   document.documentElement.lang = lang;
   document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
   document.querySelectorAll('[data-i18n]').forEach(el => {

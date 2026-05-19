@@ -1,4 +1,4 @@
--- BETAG Supabase Schema
+-- TAGR Supabase Schema
 -- Run this in your Supabase SQL Editor
 
 -- Create the nfc_labels table
@@ -38,5 +38,5 @@ INSERT INTO nfc_labels (code, product_name, manufacturer, issued_at)
 VALUES
   ('ABCD-1234-XY01', 'Limited Edition Sneaker', 'Brand Corp Indonesia', NOW() - INTERVAL '30 days'),
   ('BETG-0001-AA01', 'Premium Watch Series 7', 'Luxe Timepieces Ltd.', NOW() - INTERVAL '60 days'),
-  ('TEST-DEMO-0001', 'Sample Product (Demo)', 'BETAG Demo', NOW())
+  ('TEST-DEMO-0001', 'Sample Product (Demo)', 'TAGR Demo', NOW())
 ON CONFLICT (code) DO NOTHING;

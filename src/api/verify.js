@@ -1,4 +1,4 @@
-// BETAG Verify API — checks NFC code against Supabase
+// TAGR Verify API — checks NFC code against Supabase
 
 export async function handleVerifyAPI(request, env, corsHeaders) {
   try {
