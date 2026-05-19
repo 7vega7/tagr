@@ -1,7 +1,7 @@
 {
-  "name": "betag",
+  "name": "tagr",
   "version": "1.0.0",
-  "description": "BETAG - NFC Anti-Counterfeiting Label Service",
+  "description": "TAGR - NFC Anti-Counterfeiting Label Service",
   "main": "src/worker.js",
   "scripts": {
     "dev": "wrangler dev",
