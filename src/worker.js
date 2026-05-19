@@ -1,4 +1,4 @@
-// BETAG - NFC Anti-Counterfeiting Label Service
+// TAGR - NFC Anti-Counterfeiting Label Service
 // Cloudflare Workers Entry Point
 
 import { getLandingPage } from './pages/landing.js';
