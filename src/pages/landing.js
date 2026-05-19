@@ -1,4 +1,4 @@
-// BETAG Landing Page
+// TAGR Landing Page
 
 export function getLandingPage() {
   return `<!DOCTYPE html>
@@ -6,8 +6,8 @@ export function getLandingPage() {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BETAG — NFC Anti-Counterfeiting Labels</title>
-  <meta name="description" content="BETAG provides cutting-edge NFC-powered anti-counterfeiting labels to protect your brand and products." />
+  <title>TAGR — NFC Anti-Counterfeiting Labels</title>
+  <meta name="description" content="TAGR provides cutting-edge NFC-powered anti-counterfeiting labels to protect your brand and products." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
@@ -658,7 +658,7 @@ export function getLandingPage() {
 
 <!-- NAV -->
 <nav>
-  <a href="/" class="logo">BETAG</a>
+  <a href="/" class="logo">TAGR</a>
   <ul class="nav-links">
     <li><a href="#how-it-works" data-i18n="nav.how">How It Works</a></li>
     <li><a href="#features" data-i18n="nav.features">Features</a></li>
@@ -696,7 +696,7 @@ export function getLandingPage() {
       <span class="line-accent" data-i18n="hero.title2">Eliminate Fakes.</span>
     </h1>
     <p class="hero-sub" data-i18n="hero.subtitle">
-      BETAG's intelligent NFC labels let customers verify product authenticity instantly — stopping counterfeiters before they destroy your brand.
+      TAGR's intelligent NFC labels let customers verify product authenticity instantly — stopping counterfeiters before they destroy your brand.
     </p>
     <div class="hero-actions">
       <a href="#contact" class="btn-primary">
@@ -754,7 +754,7 @@ export function getLandingPage() {
   <div style="max-width:1100px;margin:0 auto;">
     <div class="section-header fade-in">
       <span class="section-label" data-i18n="how.label">Process</span>
-      <h2 class="section-title" data-i18n="how.title">How BETAG Works</h2>
+      <h2 class="section-title" data-i18n="how.title">How TAGR Works</h2>
       <p class="section-sub" data-i18n="how.sub">From label production to instant consumer verification — a seamless chain of trust.</p>
     </div>
     <div class="steps-grid">
@@ -766,7 +766,7 @@ export function getLandingPage() {
       <div class="step-card fade-in">
         <div class="step-num">02</div>
         <div class="step-title" data-i18n="how.s2t">Product Application</div>
-        <p class="step-desc" data-i18n="how.s2d">BETAG labels are applied to your products — tamper-evident and impossible to transfer without destruction.</p>
+        <p class="step-desc" data-i18n="how.s2d">TAGR labels are applied to your products — tamper-evident and impossible to transfer without destruction.</p>
       </div>
       <div class="step-card fade-in">
         <div class="step-num">03</div>
@@ -830,7 +830,7 @@ export function getLandingPage() {
   <div style="max-width:1100px;margin:0 auto;">
     <div class="section-header fade-in">
       <span class="section-label" data-i18n="uc.label">Industries</span>
-      <h2 class="section-title" data-i18n="uc.title">Who Uses BETAG?</h2>
+      <h2 class="section-title" data-i18n="uc.title">Who Uses TAGR?</h2>
       <p class="section-sub" data-i18n="uc.sub">From luxury fashion to pharmaceuticals — any product that can be counterfeited should be protected.</p>
     </div>
     <div class="usecase-list">
@@ -885,8 +885,8 @@ export function getLandingPage() {
   <div class="cta-box fade-in">
     <span class="section-label" data-i18n="cta.label">Get Protected</span>
     <h2 class="section-title" data-i18n="cta.title">Ready to Eliminate Counterfeits?</h2>
-    <p data-i18n="cta.sub">Talk to our team about protecting your products with BETAG's NFC anti-counterfeiting system.</p>
-    <a href="mailto:hello@betag.id" class="btn-primary">
+    <p data-i18n="cta.sub">Talk to our team about protecting your products with TAGR's NFC anti-counterfeiting system.</p>
+    <a href="mailto:hello@tagr.id" class="btn-primary">
       <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="currentColor"/></svg>
       <span data-i18n="cta.btn">Contact Us</span>
     </a>
@@ -895,13 +895,13 @@ export function getLandingPage() {
 
 <!-- FOOTER -->
 <footer>
-  <a href="/" class="footer-logo">BETAG</a>
+  <a href="/" class="footer-logo">TAGR</a>
   <div class="footer-links">
     <a href="/verify" data-i18n="footer.verify">Verify Label</a>
-    <a href="mailto:hello@betag.id" data-i18n="footer.contact">Contact</a>
+    <a href="mailto:hello@tagr.id" data-i18n="footer.contact">Contact</a>
     <a href="#" data-i18n="footer.privacy">Privacy Policy</a>
   </div>
-  <p class="footer-copy" data-i18n="footer.copy">© 2025 BETAG. All rights reserved.</p>
+  <p class="footer-copy" data-i18n="footer.copy">© 2025 TAGR. All rights reserved.</p>
 </footer>
 
 <script>
@@ -915,7 +915,7 @@ const i18n = {
     "hero.badge": "NFC-Powered Authentication",
     "hero.title1": "Protect Your Brand.",
     "hero.title2": "Eliminate Fakes.",
-    "hero.subtitle": "BETAG's intelligent NFC labels let customers verify product authenticity instantly — stopping counterfeiters before they destroy your brand.",
+    "hero.subtitle": "TAGR's intelligent NFC labels let customers verify product authenticity instantly — stopping counterfeiters before they destroy your brand.",
     "hero.cta1": "Get Started",
     "hero.cta2": "Verify a Label",
     "stats.s1": "Counterfeit goods market (USD)",
@@ -923,12 +923,12 @@ const i18n = {
     "stats.s3": "AES Encrypted chip data",
     "stats.s4": "Detection accuracy rate",
     "how.label": "Process",
-    "how.title": "How BETAG Works",
+    "how.title": "How TAGR Works",
     "how.sub": "From label production to instant consumer verification — a seamless chain of trust.",
     "how.s1t": "Label Encoding",
     "how.s1d": "Each NFC chip is programmed with a unique, cryptographically-signed identifier and registered to your product.",
     "how.s2t": "Product Application",
-    "how.s2d": "BETAG labels are applied to your products — tamper-evident and impossible to transfer without destruction.",
+    "how.s2d": "TAGR labels are applied to your products — tamper-evident and impossible to transfer without destruction.",
     "how.s3t": "Consumer Tap",
     "how.s3d": "A consumer taps any NFC-enabled smartphone to the label — no app required. Native browser verification launches instantly.",
     "how.s4t": "Instant Result",
@@ -949,7 +949,7 @@ const i18n = {
     "feat.f6t": "Custom Branding",
     "feat.f6d": "Labels are fully customizable to match your brand identity — size, shape, color, and printed design.",
     "uc.label": "Industries",
-    "uc.title": "Who Uses BETAG?",
+    "uc.title": "Who Uses TAGR?",
     "uc.sub": "From luxury fashion to pharmaceuticals — any product that can be counterfeited should be protected.",
     "uc.u1": "Fashion & Apparel", "uc.u1s": "Luxury goods, streetwear",
     "uc.u2": "Pharmaceuticals", "uc.u2s": "Medicine, supplements",
@@ -959,12 +959,12 @@ const i18n = {
     "uc.u6": "Electronics", "uc.u6s": "Gadgets, accessories",
     "cta.label": "Get Protected",
     "cta.title": "Ready to Eliminate Counterfeits?",
-    "cta.sub": "Talk to our team about protecting your products with BETAG's NFC anti-counterfeiting system.",
+    "cta.sub": "Talk to our team about protecting your products with TAGR's NFC anti-counterfeiting system.",
     "cta.btn": "Contact Us",
     "footer.verify": "Verify Label",
     "footer.contact": "Contact",
     "footer.privacy": "Privacy Policy",
-    "footer.copy": "© 2025 BETAG. All rights reserved.",
+    "footer.copy": "© 2025 TAGR. All rights reserved.",
   },
   id: {
     "nav.how": "Cara Kerja",
@@ -974,7 +974,7 @@ const i18n = {
     "hero.badge": "Autentikasi Berbasis NFC",
     "hero.title1": "Lindungi Merekmu.",
     "hero.title2": "Basmi Pemalsuan.",
-    "hero.subtitle": "Label NFC cerdas BETAG memungkinkan pelanggan memverifikasi keaslian produk secara instan — menghentikan pemalsu sebelum merusak merek Anda.",
+    "hero.subtitle": "Label NFC cerdas TAGR memungkinkan pelanggan memverifikasi keaslian produk secara instan — menghentikan pemalsu sebelum merusak merek Anda.",
     "hero.cta1": "Mulai Sekarang",
     "hero.cta2": "Verifikasi Label",
     "stats.s1": "Pasar barang palsu (USD)",
@@ -982,12 +982,12 @@ const i18n = {
     "stats.s3": "Data chip terenkripsi AES",
     "stats.s4": "Tingkat akurasi deteksi",
     "how.label": "Proses",
-    "how.title": "Cara Kerja BETAG",
+    "how.title": "Cara Kerja TAGR",
     "how.sub": "Dari produksi label hingga verifikasi konsumen instan — rantai kepercayaan yang mulus.",
     "how.s1t": "Enkoding Label",
     "how.s1d": "Setiap chip NFC diprogram dengan pengenal unik yang ditandatangani secara kriptografis dan didaftarkan ke produk Anda.",
     "how.s2t": "Pemasangan Produk",
-    "how.s2d": "Label BETAG dipasang pada produk Anda — tahan pembukaan dan tidak bisa dipindahkan tanpa kerusakan.",
+    "how.s2d": "Label TAGR dipasang pada produk Anda — tahan pembukaan dan tidak bisa dipindahkan tanpa kerusakan.",
     "how.s3t": "Ketukan Konsumen",
     "how.s3d": "Konsumen mengetuk smartphone NFC ke label — tanpa aplikasi. Verifikasi browser langsung berjalan.",
     "how.s4t": "Hasil Instan",
@@ -1008,7 +1008,7 @@ const i18n = {
     "feat.f6t": "Branding Kustom",
     "feat.f6d": "Label sepenuhnya dapat dikustomisasi sesuai identitas merek Anda.",
     "uc.label": "Industri",
-    "uc.title": "Siapa Pengguna BETAG?",
+    "uc.title": "Siapa Pengguna TAGR?",
     "uc.sub": "Dari fashion mewah hingga farmasi — produk apa pun yang bisa dipalsukan harus dilindungi.",
     "uc.u1": "Mode & Pakaian", "uc.u1s": "Barang mewah, streetwear",
     "uc.u2": "Farmasi", "uc.u2s": "Obat, suplemen",
@@ -1018,12 +1018,12 @@ const i18n = {
     "uc.u6": "Elektronik", "uc.u6s": "Gadget, aksesori",
     "cta.label": "Dapatkan Perlindungan",
     "cta.title": "Siap Membasmi Pemalsuan?",
-    "cta.sub": "Hubungi tim kami tentang perlindungan produk Anda dengan sistem anti-pemalsuan NFC BETAG.",
+    "cta.sub": "Hubungi tim kami tentang perlindungan produk Anda dengan sistem anti-pemalsuan NFC TAGR.",
     "cta.btn": "Hubungi Kami",
     "footer.verify": "Verifikasi Label",
     "footer.contact": "Kontak",
     "footer.privacy": "Kebijakan Privasi",
-    "footer.copy": "© 2025 BETAG. Semua hak dilindungi.",
+    "footer.copy": "© 2025 TAGR. Semua hak dilindungi.",
   },
   zh: {
     "nav.how": "工作原理",
@@ -1033,7 +1033,7 @@ const i18n = {
     "hero.badge": "NFC 驱动的身份验证",
     "hero.title1": "保护您的品牌。",
     "hero.title2": "杜绝假冒伪劣。",
-    "hero.subtitle": "BETAG 智能 NFC 标签让消费者即时验证产品真伪——在假冒者破坏您的品牌之前将其阻止。",
+    "hero.subtitle": "TAGR 智能 NFC 标签让消费者即时验证产品真伪——在假冒者破坏您的品牌之前将其阻止。",
     "hero.cta1": "立即开始",
     "hero.cta2": "验证标签",
     "stats.s1": "假冒商品市场（美元）",
@@ -1041,12 +1041,12 @@ const i18n = {
     "stats.s3": "AES 加密芯片数据",
     "stats.s4": "检测准确率",
     "how.label": "流程",
-    "how.title": "BETAG 如何工作",
+    "how.title": "TAGR 如何工作",
     "how.sub": "从标签生产到即时消费者验证——无缝的信任链。",
     "how.s1t": "标签编码",
     "how.s1d": "每个 NFC 芯片都被编程了唯一的加密签名标识符，并注册到您的产品。",
     "how.s2t": "产品应用",
-    "how.s2d": "BETAG 标签贴于您的产品上——防篡改，无法在不破坏的情况下转移。",
+    "how.s2d": "TAGR 标签贴于您的产品上——防篡改，无法在不破坏的情况下转移。",
     "how.s3t": "消费者点击",
     "how.s3d": "消费者用任何支持 NFC 的智能手机点击标签——无需应用，即时验证。",
     "how.s4t": "即时结果",
@@ -1067,7 +1067,7 @@ const i18n = {
     "feat.f6t": "自定义品牌",
     "feat.f6d": "标签完全可定制以匹配您的品牌形象。",
     "uc.label": "行业",
-    "uc.title": "谁在使用 BETAG？",
+    "uc.title": "谁在使用 TAGR？",
     "uc.sub": "从奢侈时装到制药——任何可能被假冒的产品都应该受到保护。",
     "uc.u1": "时尚与服装", "uc.u1s": "奢侈品、街头服饰",
     "uc.u2": "制药", "uc.u2s": "药品、补充剂",
@@ -1077,12 +1077,12 @@ const i18n = {
     "uc.u6": "电子产品", "uc.u6s": "小工具、配件",
     "cta.label": "获得保护",
     "cta.title": "准备好杜绝假冒了吗？",
-    "cta.sub": "与我们的团队联系，了解如何使用 BETAG 的 NFC 防伪系统保护您的产品。",
+    "cta.sub": "与我们的团队联系，了解如何使用 TAGR 的 NFC 防伪系统保护您的产品。",
     "cta.btn": "联系我们",
     "footer.verify": "验证标签",
     "footer.contact": "联系方式",
     "footer.privacy": "隐私政策",
-    "footer.copy": "© 2025 BETAG。保留所有权利。",
+    "footer.copy": "© 2025 TAGR。保留所有权利。",
   },
   ar: {
     "nav.how": "كيف يعمل",
@@ -1092,7 +1092,7 @@ const i18n = {
     "hero.badge": "مصادقة بتقنية NFC",
     "hero.title1": "احمِ علامتك التجارية.",
     "hero.title2": "أزل المنتجات المزيفة.",
-    "hero.subtitle": "ملصقات BETAG الذكية بتقنية NFC تتيح للعملاء التحقق من أصالة المنتج فوراً — وإيقاف المزيفين قبل أن يدمروا علامتك التجارية.",
+    "hero.subtitle": "ملصقات TAGR الذكية بتقنية NFC تتيح للعملاء التحقق من أصالة المنتج فوراً — وإيقاف المزيفين قبل أن يدمروا علامتك التجارية.",
     "hero.cta1": "ابدأ الآن",
     "hero.cta2": "تحقق من ملصق",
     "stats.s1": "سوق السلع المزيفة (دولار)",
@@ -1100,12 +1100,12 @@ const i18n = {
     "stats.s3": "بيانات الشريحة مشفرة AES",
     "stats.s4": "معدل دقة الكشف",
     "how.label": "العملية",
-    "how.title": "كيف يعمل BETAG",
+    "how.title": "كيف يعمل TAGR",
     "how.sub": "من إنتاج الملصق إلى التحقق الفوري للمستهلك — سلسلة ثقة سلسة.",
     "how.s1t": "ترميز الملصق",
     "how.s1d": "تتم برمجة كل شريحة NFC بمعرّف فريد موقّع تشفيرياً ومسجّل لمنتجك.",
     "how.s2t": "تطبيق المنتج",
-    "how.s2d": "تُلصق ملصقات BETAG على منتجاتك — مقاومة للتلاعب ويستحيل نقلها دون تدمير.",
+    "how.s2d": "تُلصق ملصقات TAGR على منتجاتك — مقاومة للتلاعب ويستحيل نقلها دون تدمير.",
     "how.s3t": "نقرة المستهلك",
     "how.s3d": "ينقر المستهلك بأي هاتف ذكي يدعم NFC على الملصق — دون تطبيق. التحقق عبر المتصفح يبدأ فوراً.",
     "how.s4t": "نتيجة فورية",
@@ -1126,7 +1126,7 @@ const i18n = {
     "feat.f6t": "علامة تجارية مخصصة",
     "feat.f6d": "الملصقات قابلة للتخصيص الكامل لتتناسب مع هوية علامتك التجارية.",
     "uc.label": "الصناعات",
-    "uc.title": "من يستخدم BETAG؟",
+    "uc.title": "من يستخدم TAGR؟",
     "uc.sub": "من الأزياء الفاخرة إلى الأدوية — أي منتج يمكن تزويره يجب حمايته.",
     "uc.u1": "الأزياء والملابس", "uc.u1s": "السلع الفاخرة، الملابس الشبابية",
     "uc.u2": "الصيدلانيات", "uc.u2s": "الأدوية والمكملات",
@@ -1136,12 +1136,12 @@ const i18n = {
     "uc.u6": "الإلكترونيات", "uc.u6s": "الأجهزة، الملحقات",
     "cta.label": "احصل على الحماية",
     "cta.title": "مستعد للقضاء على التزوير؟",
-    "cta.sub": "تحدث إلى فريقنا حول حماية منتجاتك بنظام BETAG لمكافحة التزوير عبر NFC.",
+    "cta.sub": "تحدث إلى فريقنا حول حماية منتجاتك بنظام TAGR لمكافحة التزوير عبر NFC.",
     "cta.btn": "تواصل معنا",
     "footer.verify": "تحقق من الملصق",
     "footer.contact": "تواصل",
     "footer.privacy": "سياسة الخصوصية",
-    "footer.copy": "© 2025 BETAG. جميع الحقوق محفوظة.",
+    "footer.copy": "© 2025 TAGR. جميع الحقوق محفوظة.",
   },
   fr: {
     "nav.how": "Comment ça marche",
@@ -1151,7 +1151,7 @@ const i18n = {
     "hero.badge": "Authentification par NFC",
     "hero.title1": "Protégez votre marque.",
     "hero.title2": "Éliminez les contrefaçons.",
-    "hero.subtitle": "Les étiquettes NFC intelligentes de BETAG permettent aux clients de vérifier instantanément l'authenticité des produits — stoppant les contrefacteurs avant qu'ils ne détruisent votre marque.",
+    "hero.subtitle": "Les étiquettes NFC intelligentes de TAGR permettent aux clients de vérifier instantanément l'authenticité des produits — stoppant les contrefacteurs avant qu'ils ne détruisent votre marque.",
     "hero.cta1": "Commencer",
     "hero.cta2": "Vérifier une étiquette",
     "stats.s1": "Marché des contrefaçons (USD)",
@@ -1159,12 +1159,12 @@ const i18n = {
     "stats.s3": "Données chiffréess AES",
     "stats.s4": "Taux de détection précis",
     "how.label": "Processus",
-    "how.title": "Comment fonctionne BETAG",
+    "how.title": "Comment fonctionne TAGR",
     "how.sub": "De la production de l'étiquette à la vérification instantanée du consommateur — une chaîne de confiance transparente.",
     "how.s1t": "Encodage de l'étiquette",
     "how.s1d": "Chaque puce NFC est programmée avec un identifiant unique signé cryptographiquement et enregistré à votre produit.",
     "how.s2t": "Application du produit",
-    "how.s2d": "Les étiquettes BETAG sont appliquées sur vos produits — inviolables et impossibles à transférer sans destruction.",
+    "how.s2d": "Les étiquettes TAGR sont appliquées sur vos produits — inviolables et impossibles à transférer sans destruction.",
     "how.s3t": "Tap du consommateur",
     "how.s3d": "Le consommateur touche l'étiquette avec un smartphone NFC — sans application. La vérification via navigateur se lance instantanément.",
     "how.s4t": "Résultat instantané",
@@ -1185,7 +1185,7 @@ const i18n = {
     "feat.f6t": "Personnalisation",
     "feat.f6d": "Les étiquettes sont entièrement personnalisables pour correspondre à l'identité de votre marque.",
     "uc.label": "Industries",
-    "uc.title": "Qui utilise BETAG ?",
+    "uc.title": "Qui utilise TAGR ?",
     "uc.sub": "De la mode de luxe aux pharmaceutiques — tout produit pouvant être contrefait doit être protégé.",
     "uc.u1": "Mode & Prêt-à-porter", "uc.u1s": "Luxe, streetwear",
     "uc.u2": "Pharmaceutique", "uc.u2s": "Médicaments, compléments",
@@ -1195,12 +1195,12 @@ const i18n = {
     "uc.u6": "Électronique", "uc.u6s": "Gadgets, accessoires",
     "cta.label": "Se protéger",
     "cta.title": "Prêt à éliminer les contrefaçons ?",
-    "cta.sub": "Parlez à notre équipe de la protection de vos produits avec le système anti-contrefaçon NFC de BETAG.",
+    "cta.sub": "Parlez à notre équipe de la protection de vos produits avec le système anti-contrefaçon NFC de TAGR.",
     "cta.btn": "Nous contacter",
     "footer.verify": "Vérifier l'étiquette",
     "footer.contact": "Contact",
     "footer.privacy": "Politique de confidentialité",
-    "footer.copy": "© 2025 BETAG. Tous droits réservés.",
+    "footer.copy": "© 2025 TAGR. Tous droits réservés.",
   }
 };
 
@@ -1212,12 +1212,12 @@ const langMeta = {
   fr: { flag: '🇫🇷', code: 'FR' },
 };
 
-let currentLang = localStorage.getItem('betag_lang') || 'en';
+let currentLang = localStorage.getItem('tagr_lang') || 'en';
 
 function applyLang(lang) {
   if (!i18n[lang]) return;
   currentLang = lang;
-  localStorage.setItem('betag_lang', lang);
+  localStorage.setItem('tagr_lang', lang);
 
   document.documentElement.lang = lang;
   document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
