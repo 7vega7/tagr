@@ -66,3 +66,35 @@ export default {
     return new Response('Not Found', { status: 404 });
   },
 };
+    if (path === '/api/verify' && request.method === 'POST') {
+      return handleVerifyAPI(request, env, corsHeaders);
+    }
+
+    // Page Routes
+    if (path === '/' || path === '/index.html') {
+      return new Response(getLandingPage(), {
+        headers: { 'Content-Type': 'text/html;charset=UTF-8' },
+      });
+    }
+
+    if (path === '/verify' || path === '/verify.html') {
+      // Support both ?t=encoded (new) and ?code=plain (legacy)
+      let code = '';
+      const t = url.searchParams.get('t');
+      const plainCode = url.searchParams.get('code');
+
+      if (t) {
+        code = decodeToken(t) || '';
+      } else if (plainCode) {
+        code = plainCode;
+      }
+
+      return new Response(getVerifyPage(code), {
+        headers: { 'Content-Type': 'text/html;charset=UTF-8' },
+      });
+    }
+
+    // 404
+    return new Response('Not Found', { status: 404 });
+  },
+};
