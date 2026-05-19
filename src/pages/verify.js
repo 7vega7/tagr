@@ -1,4 +1,4 @@
-// TAGR Verify Page
+// TAGR Verify Page — NFC tap only, no manual input
 
 export function getVerifyPage(initialCode = '') {
   const safeCode = initialCode.replace(/[<>"'&]/g, '');
@@ -24,13 +24,10 @@ export function getVerifyPage(initialCode = '') {
       --text: #E8F4F2;
       --text-muted: #7A9EA8;
       --text-dim: #3D6070;
-      --success: #00D2B4;
       --danger: #FF4B6E;
-      --danger-dim: rgba(255,75,110,0.08);
       --warning: #F5A623;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
     body {
       font-family: 'DM Sans', sans-serif;
       background: var(--bg);
@@ -76,7 +73,6 @@ export function getVerifyPage(initialCode = '') {
     .nav-link { color: var(--text-muted); text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
     .nav-link:hover { color: var(--text); }
 
-    /* Language Selector */
     .lang-selector { position: relative; }
     .lang-btn {
       background: var(--surface2);
@@ -120,22 +116,6 @@ export function getVerifyPage(initialCode = '') {
     .lang-option:hover { background: var(--accent-dim); color: var(--text); }
     .lang-option.active { color: var(--accent); }
 
-    /* MAIN LAYOUT */
-    main {
-      flex: 1;
-      position: relative;
-      z-index: 2;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 60px 5vw;
-    }
-    .verify-container {
-      width: 100%;
-      max-width: 560px;
-    }
-
-    /* GRID BACKGROUND */
     .bg-grid {
       position: fixed;
       inset: 0;
@@ -147,300 +127,191 @@ export function getVerifyPage(initialCode = '') {
       mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 30%, transparent 100%);
     }
 
-    /* HEADER */
-    .verify-header {
-      text-align: center;
-      margin-bottom: 2.5rem;
-      animation: slideDown 0.7s cubic-bezier(0.22,1,0.36,1) both;
-    }
-    @keyframes slideDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: none; }
-    }
-    .verify-icon {
-      width: 80px; height: 80px;
-      border-radius: 20px;
-      background: var(--accent-dim);
-      border: 1px solid rgba(0,210,180,0.25);
+    main {
+      flex: 1;
+      position: relative;
+      z-index: 2;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 1.5rem;
-      font-size: 2rem;
+      padding: 60px 5vw;
+    }
+    .verify-container {
+      width: 100%;
+      max-width: 520px;
+      text-align: center;
+    }
+
+    /* WAITING STATE */
+    .waiting-state { animation: fadeUp 0.7s cubic-bezier(0.22,1,0.36,1) both; }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    .nfc-pulse-wrap {
+      width: 160px;
+      height: 160px;
+      margin: 0 auto 2.5rem;
       position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .verify-icon::before {
-      content: '';
+    .pulse-ring {
       position: absolute;
-      inset: -4px;
-      border-radius: 24px;
-      border: 1px solid rgba(0,210,180,0.1);
+      border-radius: 50%;
+      border: 1.5px solid var(--accent);
+      opacity: 0;
+      animation: pulseRing 2.5s ease-out infinite;
     }
-    .verify-header h1 {
+    .pulse-ring:nth-child(1) { width: 76px; height: 76px; animation-delay: 0s; }
+    .pulse-ring:nth-child(2) { width: 112px; height: 112px; animation-delay: 0.7s; }
+    .pulse-ring:nth-child(3) { width: 150px; height: 150px; animation-delay: 1.4s; }
+    @keyframes pulseRing {
+      0% { opacity: 0.7; transform: scale(0.5); }
+      100% { opacity: 0; transform: scale(1); }
+    }
+    .nfc-center {
+      width: 64px; height: 64px;
+      background: var(--accent-dim);
+      border: 1px solid rgba(0,210,180,0.3);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .waiting-title {
       font-family: 'Syne', sans-serif;
-      font-size: 2rem;
+      font-size: 1.9rem;
       font-weight: 800;
       letter-spacing: -0.02em;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.8rem;
     }
-    .verify-header p {
+    .waiting-sub {
       color: var(--text-muted);
-      font-size: 0.95rem;
+      font-size: 0.97rem;
       font-weight: 300;
+      line-height: 1.7;
+      max-width: 360px;
+      margin: 0 auto;
     }
 
-    /* CARD */
-    .verify-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 2rem;
-      animation: cardReveal 0.7s cubic-bezier(0.22,1,0.36,1) 0.15s both;
-      position: relative;
-      overflow: hidden;
-    }
-    @keyframes cardReveal {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: none; }
-    }
-    .verify-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--accent), transparent);
-      opacity: 0.4;
-    }
-
-    /* INPUT GROUP */
-    .input-group {
-      margin-bottom: 1.2rem;
-    }
-    .input-label {
-      display: block;
-      font-size: 0.8rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 0.6rem;
-      font-weight: 500;
-    }
-    .input-wrap {
-      position: relative;
-      display: flex;
-      align-items: center;
-    }
-    .code-input {
-      width: 100%;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 0.9rem 3rem 0.9rem 1.1rem;
-      font-family: 'Syne', monospace;
-      font-size: 1.1rem;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      color: var(--text);
-      transition: border-color 0.2s, box-shadow 0.2s;
-      text-transform: uppercase;
-      outline: none;
-    }
-    .code-input::placeholder {
-      color: var(--text-dim);
-      font-weight: 400;
-      letter-spacing: 0.05em;
-    }
-    .code-input:focus {
-      border-color: rgba(0,210,180,0.4);
-      box-shadow: 0 0 0 3px rgba(0,210,180,0.06);
-    }
-    .input-clear {
-      position: absolute;
-      right: 0.75rem;
-      background: none;
-      border: none;
-      color: var(--text-dim);
-      cursor: pointer;
-      padding: 0.25rem;
-      display: none;
-      transition: color 0.2s;
-    }
-    .input-clear:hover { color: var(--text-muted); }
-    .input-clear.visible { display: block; }
-
-    /* SUBMIT BUTTON */
-    .verify-btn {
-      width: 100%;
-      background: var(--accent);
-      color: #050A0E;
-      border: none;
-      border-radius: 8px;
-      padding: 1rem;
-      font-family: 'Syne', sans-serif;
-      font-size: 1rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      cursor: pointer;
-      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      box-shadow: 0 0 20px rgba(0,210,180,0.2);
-    }
-    .verify-btn:hover:not(:disabled) {
-      background: var(--accent2);
-      transform: translateY(-1px);
-      box-shadow: 0 0 32px rgba(0,210,180,0.35);
-    }
-    .verify-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
-
-    /* SPINNER */
-    .spinner {
-      width: 18px; height: 18px;
-      border: 2px solid rgba(5,10,14,0.3);
-      border-top-color: #050A0E;
+    /* LOADING STATE */
+    .loading-state { animation: fadeUp 0.4s ease both; }
+    .loading-spinner {
+      width: 52px; height: 52px;
+      border: 3px solid rgba(0,210,180,0.12);
+      border-top-color: var(--accent);
       border-radius: 50%;
-      animation: spin 0.8s linear infinite;
+      animation: spin 0.9s linear infinite;
+      margin: 0 auto 1.8rem;
     }
     @keyframes spin { to { transform: rotate(360deg); } }
-
-    /* DIVIDER */
-    .divider {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin: 1.5rem 0;
-      color: var(--text-dim);
-      font-size: 0.78rem;
-      letter-spacing: 0.08em;
-    }
-    .divider::before, .divider::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border);
+    .loading-text {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
     }
 
-    /* SCAN INSTRUCTION */
-    .scan-hint {
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1rem 1.2rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
+    /* RESULT CARD */
+    .result-card {
+      border-radius: 16px;
+      padding: 2.5rem 2rem;
+      text-align: left;
+      position: relative;
+      overflow: hidden;
+      animation: resultIn 0.5s cubic-bezier(0.22,1,0.36,1) both;
     }
-    .scan-hint-icon { font-size: 1.5rem; flex-shrink: 0; }
-    .scan-hint-text { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
-    .scan-hint-text strong { color: var(--text); font-weight: 500; }
-
-    /* ─── RESULT STATES ─── */
-    #result { margin-top: 1.5rem; display: none; }
-    #result.visible { display: block; }
-
-    .result-authentic {
-      border-radius: 12px;
-      padding: 1.8rem;
-      border: 1px solid rgba(0,210,180,0.3);
-      background: rgba(0,210,180,0.04);
-      animation: resultReveal 0.5s cubic-bezier(0.22,1,0.36,1) both;
-    }
-    .result-fake {
-      border-radius: 12px;
-      padding: 1.8rem;
-      border: 1px solid rgba(255,75,110,0.3);
-      background: rgba(255,75,110,0.04);
-      animation: resultReveal 0.5s cubic-bezier(0.22,1,0.36,1) both;
-    }
-    .result-error {
-      border-radius: 12px;
-      padding: 1.8rem;
-      border: 1px solid rgba(245,166,35,0.3);
-      background: rgba(245,166,35,0.04);
-      animation: resultReveal 0.5s cubic-bezier(0.22,1,0.36,1) both;
-    }
-    @keyframes resultReveal {
-      from { opacity: 0; transform: scale(0.97) translateY(10px); }
+    @keyframes resultIn {
+      from { opacity: 0; transform: scale(0.96) translateY(14px); }
       to { opacity: 1; transform: none; }
+    }
+    .card-authentic {
+      background: rgba(0,210,180,0.04);
+      border: 1px solid rgba(0,210,180,0.3);
+    }
+    .card-authentic::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    }
+    .card-fake {
+      background: rgba(255,75,110,0.04);
+      border: 1px solid rgba(255,75,110,0.3);
+    }
+    .card-fake::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--danger), transparent);
+    }
+    .card-error {
+      background: rgba(245,166,35,0.04);
+      border: 1px solid rgba(245,166,35,0.3);
     }
 
     .result-top {
       display: flex;
       align-items: center;
-      gap: 1rem;
-      margin-bottom: 1.2rem;
+      gap: 1.2rem;
+      margin-bottom: 1.5rem;
     }
-    .result-badge {
-      width: 48px; height: 48px;
-      border-radius: 12px;
+    .result-icon {
+      width: 56px; height: 56px;
+      border-radius: 14px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.5rem;
+      font-size: 1.7rem;
       flex-shrink: 0;
     }
-    .badge-authentic { background: rgba(0,210,180,0.12); }
-    .badge-fake { background: rgba(255,75,110,0.12); }
-    .badge-error { background: rgba(245,166,35,0.12); }
+    .icon-ok { background: rgba(0,210,180,0.12); }
+    .icon-bad { background: rgba(255,75,110,0.12); }
+    .icon-warn { background: rgba(245,166,35,0.12); }
 
     .result-title {
       font-family: 'Syne', sans-serif;
-      font-size: 1.25rem;
+      font-size: 1.4rem;
       font-weight: 800;
     }
-    .authentic-title { color: var(--accent); }
-    .fake-title { color: var(--danger); }
-    .error-title { color: var(--warning); }
+    .col-ok { color: var(--accent); }
+    .col-bad { color: var(--danger); }
+    .col-warn { color: var(--warning); }
+    .result-sub { font-size: 0.87rem; color: var(--text-muted); margin-top: 0.3rem; line-height: 1.5; }
 
-    .result-subtitle {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-top: 0.2rem;
-    }
-
-    /* Product detail rows */
     .detail-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 0.75rem;
-      margin-top: 1.2rem;
-      padding-top: 1.2rem;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
       border-top: 1px solid var(--border);
     }
-    .detail-item {}
-    .detail-key {
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-dim);
-      margin-bottom: 0.2rem;
-    }
-    .detail-val {
-      font-size: 0.9rem;
-      color: var(--text);
-      font-weight: 500;
-    }
+    .detail-key { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 0.25rem; }
+    .detail-val { font-size: 0.92rem; color: var(--text); font-weight: 500; }
+    .code-mono { font-family: 'Syne', monospace; letter-spacing: 0.1em; }
 
-    .scan-count-badge {
+    .scan-badge {
       display: inline-flex;
       align-items: center;
-      gap: 0.3rem;
+      gap: 0.35rem;
       background: rgba(0,210,180,0.08);
       border: 1px solid rgba(0,210,180,0.2);
       border-radius: 100px;
-      padding: 0.2rem 0.7rem;
+      padding: 0.25rem 0.8rem;
       font-size: 0.78rem;
       color: var(--accent);
-      margin-top: 0.5rem;
+      margin-top: 1rem;
     }
-
-    /* Warning for high scan count */
     .scan-warning {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.6rem;
       margin-top: 1rem;
       padding: 0.8rem 1rem;
       background: rgba(245,166,35,0.06);
@@ -448,10 +319,9 @@ export function getVerifyPage(initialCode = '') {
       border-radius: 8px;
       font-size: 0.82rem;
       color: var(--warning);
-      line-height: 1.5;
+      line-height: 1.6;
     }
 
-    /* FOOTER */
     footer {
       position: relative;
       z-index: 2;
@@ -467,6 +337,7 @@ export function getVerifyPage(initialCode = '') {
 
     @media (max-width: 480px) {
       .detail-grid { grid-template-columns: 1fr; }
+      .result-card { padding: 1.8rem 1.3rem; }
       footer { flex-direction: column; gap: 0.5rem; text-align: center; }
     }
   </style>
@@ -497,51 +368,27 @@ export function getVerifyPage(initialCode = '') {
 
 <main>
   <div class="verify-container">
-    <div class="verify-header">
-      <div class="verify-icon">📡</div>
-      <h1 data-i18n="v.title">Verify Authenticity</h1>
-      <p data-i18n="v.sub">Enter the code from your TAGR NFC label to confirm it is genuine.</p>
+    <div id="stateWaiting" style="display:none">
+      <div class="waiting-state">
+        <div class="nfc-pulse-wrap">
+          <div class="pulse-ring"></div>
+          <div class="pulse-ring"></div>
+          <div class="pulse-ring"></div>
+          <div class="nfc-center">📡</div>
+        </div>
+        <h1 class="waiting-title" data-i18n="v.waitTitle">Tap Your Label</h1>
+        <p class="waiting-sub" data-i18n="v.waitSub">Hold your NFC-enabled phone against the TAGR label to verify this product's authenticity.</p>
+      </div>
     </div>
 
-    <div class="verify-card">
-      <div class="input-group">
-        <label class="input-label" for="codeInput" data-i18n="v.inputLabel">Label Code</label>
-        <div class="input-wrap">
-          <input
-            type="text"
-            id="codeInput"
-            class="code-input"
-            placeholder="XXXX-XXXX-XXXX"
-            maxlength="20"
-            autocomplete="off"
-            autocorrect="off"
-            spellcheck="false"
-            value="${safeCode}"
-          />
-          <button class="input-clear" id="clearBtn" onclick="clearInput()" title="Clear">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-          </button>
-        </div>
+    <div id="stateLoading" style="display:none">
+      <div class="loading-state">
+        <div class="loading-spinner"></div>
+        <div class="loading-text" data-i18n="v.loading">Verifying...</div>
       </div>
-
-      <button class="verify-btn" id="verifyBtn" onclick="doVerify()">
-        <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span data-i18n="v.btn">Verify Label</span>
-      </button>
-
-      <div class="divider" data-i18n="v.or">or scan via NFC</div>
-
-      <div class="scan-hint">
-        <span class="scan-hint-icon">📱</span>
-        <div class="scan-hint-text">
-          <strong data-i18n="v.nfcTitle">Use Your Phone</strong><br>
-          <span data-i18n="v.nfcDesc">Tap any NFC-enabled smartphone directly to the label. Your browser will open this page automatically with the code pre-filled.</span>
-        </div>
-      </div>
-
-      <!-- RESULT AREA -->
-      <div id="result"></div>
     </div>
+
+    <div id="stateResult" style="display:none"></div>
   </div>
 </main>
 
@@ -551,40 +398,31 @@ export function getVerifyPage(initialCode = '') {
 </footer>
 
 <script>
-// ─── TRANSLATIONS ───
 const i18n = {
   en: {
     "nav.home": "← Home",
-    "v.title": "Verify Authenticity",
-    "v.sub": "Enter the code from your TAGR NFC label to confirm it is genuine.",
-    "v.inputLabel": "Label Code",
-    "v.btn": "Verify Label",
-    "v.or": "or scan via NFC",
-    "v.nfcTitle": "Use Your Phone",
-    "v.nfcDesc": "Tap any NFC-enabled smartphone directly to the label. Your browser will open this page automatically with the code pre-filled.",
+    "v.waitTitle": "Tap Your Label",
+    "v.waitSub": "Hold your NFC-enabled phone against the TAGR label to verify this product's authenticity.",
+    "v.loading": "Verifying...",
     "v.authentic.title": "Authentic Product",
     "v.authentic.sub": "This TAGR label is registered and valid.",
     "v.fake.title": "Not Recognized",
     "v.fake.sub": "This code was not found in the TAGR database. This product may be counterfeit.",
     "v.error.title": "Verification Error",
-    "v.error.sub": "Could not complete the verification. Please try again.",
+    "v.error.sub": "Could not complete verification. Please try again.",
     "v.detail.code": "Label Code",
     "v.detail.product": "Product",
     "v.detail.maker": "Manufacturer",
     "v.detail.issued": "Issued",
     "v.detail.scans": "Total Scans",
-    "v.scanWarn": "⚠️ This label has been scanned many times. If you did not expect this, the product may have exchanged hands or been reused.",
+    "v.scanWarn": "⚠️ This label has been scanned many times. If unexpected, the product may have changed hands.",
     "footer.copy": "© 2025 TAGR. All rights reserved.",
   },
   id: {
     "nav.home": "← Beranda",
-    "v.title": "Verifikasi Keaslian",
-    "v.sub": "Masukkan kode dari label NFC TAGR Anda untuk memastikan keasliannya.",
-    "v.inputLabel": "Kode Label",
-    "v.btn": "Verifikasi Label",
-    "v.or": "atau pindai via NFC",
-    "v.nfcTitle": "Gunakan Ponsel Anda",
-    "v.nfcDesc": "Ketuk ponsel NFC langsung ke label. Browser Anda akan membuka halaman ini secara otomatis dengan kode terisi.",
+    "v.waitTitle": "Ketuk Label Anda",
+    "v.waitSub": "Tempelkan ponsel NFC Anda ke label TAGR untuk memverifikasi keaslian produk ini.",
+    "v.loading": "Memverifikasi...",
     "v.authentic.title": "Produk Asli",
     "v.authentic.sub": "Label TAGR ini terdaftar dan valid.",
     "v.fake.title": "Tidak Dikenali",
@@ -596,18 +434,14 @@ const i18n = {
     "v.detail.maker": "Produsen",
     "v.detail.issued": "Diterbitkan",
     "v.detail.scans": "Total Pemindaian",
-    "v.scanWarn": "⚠️ Label ini telah dipindai berkali-kali. Jika Anda tidak mengharapkan ini, produk mungkin telah berpindah tangan.",
+    "v.scanWarn": "⚠️ Label ini telah dipindai berkali-kali. Produk mungkin telah berpindah tangan.",
     "footer.copy": "© 2025 TAGR. Semua hak dilindungi.",
   },
   zh: {
     "nav.home": "← 首页",
-    "v.title": "验证真实性",
-    "v.sub": "输入您的 TAGR NFC 标签上的代码以确认其真实性。",
-    "v.inputLabel": "标签代码",
-    "v.btn": "验证标签",
-    "v.or": "或通过 NFC 扫描",
-    "v.nfcTitle": "使用您的手机",
-    "v.nfcDesc": "将任何支持 NFC 的智能手机直接点击标签，浏览器将自动打开此页面并预填代码。",
+    "v.waitTitle": "点击您的标签",
+    "v.waitSub": "将支持 NFC 的手机靠近 TAGR 标签以验证产品真实性。",
+    "v.loading": "验证中...",
     "v.authentic.title": "正品",
     "v.authentic.sub": "此 TAGR 标签已注册且有效。",
     "v.fake.title": "未识别",
@@ -619,22 +453,18 @@ const i18n = {
     "v.detail.maker": "制造商",
     "v.detail.issued": "发行时间",
     "v.detail.scans": "总扫描次数",
-    "v.scanWarn": "⚠️ 此标签已被多次扫描。如果您未预期此情况，产品可能已易手或被重复使用。",
+    "v.scanWarn": "⚠️ 此标签已被多次扫描，产品可能已易手。",
     "footer.copy": "© 2025 TAGR。保留所有权利。",
   },
   ar: {
     "nav.home": "→ الرئيسية",
-    "v.title": "التحقق من الأصالة",
-    "v.sub": "أدخل الرمز من ملصق NFC الخاص بـ TAGR للتأكد من أصالته.",
-    "v.inputLabel": "رمز الملصق",
-    "v.btn": "التحقق من الملصق",
-    "v.or": "أو امسح عبر NFC",
-    "v.nfcTitle": "استخدم هاتفك",
-    "v.nfcDesc": "انقر بأي هاتف ذكي يدعم NFC مباشرة على الملصق. سيفتح متصفحك هذه الصفحة تلقائياً مع ملء الرمز مسبقاً.",
+    "v.waitTitle": "انقر على الملصق",
+    "v.waitSub": "ضع هاتفك المدعوم بـ NFC على ملصق TAGR للتحقق من أصالة هذا المنتج.",
+    "v.loading": "جارٍ التحقق...",
     "v.authentic.title": "منتج أصلي",
     "v.authentic.sub": "ملصق TAGR هذا مسجل وصالح.",
     "v.fake.title": "غير معروف",
-    "v.fake.sub": "لم يتم العثور على هذا الرمز في قاعدة بيانات TAGR. قد يكون هذا المنتج مزوراً.",
+    "v.fake.sub": "لم يتم العثور على هذا الرمز في قاعدة بيانات TAGR.",
     "v.error.title": "خطأ في التحقق",
     "v.error.sub": "تعذر إتمام التحقق. يرجى المحاولة مرة أخرى.",
     "v.detail.code": "رمز الملصق",
@@ -642,33 +472,30 @@ const i18n = {
     "v.detail.maker": "الشركة المصنعة",
     "v.detail.issued": "تاريخ الإصدار",
     "v.detail.scans": "إجمالي المسح",
-    "v.scanWarn": "⚠️ تم مسح هذا الملصق عدة مرات. إذا لم تتوقع ذلك، فقد يكون المنتج انتقل من يد لأخرى.",
+    "v.scanWarn": "⚠️ تم مسح هذا الملصق عدة مرات. قد يكون المنتج انتقل من يد لأخرى.",
     "footer.copy": "© 2025 TAGR. جميع الحقوق محفوظة.",
   },
   fr: {
     "nav.home": "← Accueil",
-    "v.title": "Vérifier l'authenticité",
-    "v.sub": "Saisissez le code de votre étiquette NFC TAGR pour confirmer qu'elle est authentique.",
-    "v.inputLabel": "Code de l'étiquette",
-    "v.btn": "Vérifier l'étiquette",
-    "v.or": "ou scanner via NFC",
-    "v.nfcTitle": "Utilisez votre téléphone",
-    "v.nfcDesc": "Approchez un smartphone NFC de l'étiquette. Votre navigateur ouvrira cette page automatiquement avec le code pré-rempli.",
+    "v.waitTitle": "Approchez votre étiquette",
+    "v.waitSub": "Approchez votre téléphone NFC de l'étiquette TAGR pour vérifier l'authenticité de ce produit.",
+    "v.loading": "Vérification...",
     "v.authentic.title": "Produit authentique",
     "v.authentic.sub": "Cette étiquette TAGR est enregistrée et valide.",
     "v.fake.title": "Non reconnu",
-    "v.fake.sub": "Ce code n'a pas été trouvé dans la base de données TAGR. Ce produit pourrait être contrefait.",
+    "v.fake.sub": "Ce code n'a pas été trouvé dans la base de données TAGR.",
     "v.error.title": "Erreur de vérification",
-    "v.error.sub": "La vérification n'a pas pu être complétée. Veuillez réessayer.",
+    "v.error.sub": "La vérification n'a pas pu être complétée.",
     "v.detail.code": "Code de l'étiquette",
     "v.detail.product": "Produit",
     "v.detail.maker": "Fabricant",
     "v.detail.issued": "Émis le",
     "v.detail.scans": "Scans totaux",
-    "v.scanWarn": "⚠️ Cette étiquette a été scannée plusieurs fois. Si vous ne l'attendiez pas, le produit a peut-être changé de mains.",
+    "v.scanWarn": "⚠️ Cette étiquette a été scannée plusieurs fois. Le produit a peut-être changé de mains.",
     "footer.copy": "© 2025 TAGR. Tous droits réservés.",
   }
 };
+
 const langMeta = {
   en: { flag: '🇺🇸', code: 'EN' },
   id: { flag: '🇮🇩', code: 'ID' },
@@ -676,9 +503,9 @@ const langMeta = {
   ar: { flag: '🇸🇦', code: 'AR' },
   fr: { flag: '🇫🇷', code: 'FR' },
 };
-let currentLang = localStorage.getItem('tagr_lang') || 'en';
 
-function t(key) { return (i18n[currentLang] && i18n[currentLang][key]) || key; }
+let currentLang = localStorage.getItem('tagr_lang') || 'en';
+function t(k) { return (i18n[currentLang] && i18n[currentLang][k]) || k; }
 
 function applyLang(lang) {
   if (!i18n[lang]) return;
@@ -698,50 +525,18 @@ function applyLang(lang) {
 }
 function setLang(lang) { applyLang(lang); document.getElementById('langDropdown').classList.remove('open'); }
 function toggleLang() { document.getElementById('langDropdown').classList.toggle('open'); }
-document.addEventListener('click', (e) => {
+document.addEventListener('click', e => {
   if (!e.target.closest('.lang-selector')) document.getElementById('langDropdown').classList.remove('open');
 });
 
-// ─── INPUT BEHAVIOR ───
-const codeInput = document.getElementById('codeInput');
-const clearBtn = document.getElementById('clearBtn');
-
-codeInput.addEventListener('input', () => {
-  clearBtn.classList.toggle('visible', codeInput.value.length > 0);
-  // Auto-format: insert dash at positions 4 and 9
-  let v = codeInput.value.replace(/[^A-Za-z0-9]/g, '').toUpperCase();
-  if (v.length > 4) v = v.slice(0,4) + '-' + v.slice(4);
-  if (v.length > 9) v = v.slice(0,9) + '-' + v.slice(9);
-  codeInput.value = v;
-});
-
-codeInput.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter') doVerify();
-});
-
-function clearInput() {
-  codeInput.value = '';
-  clearBtn.classList.remove('visible');
-  document.getElementById('result').className = '';
-  document.getElementById('result').innerHTML = '';
-  document.getElementById('result').style.display = 'none';
-  codeInput.focus();
+function showState(s) {
+  document.getElementById('stateWaiting').style.display = s === 'waiting' ? 'block' : 'none';
+  document.getElementById('stateLoading').style.display = s === 'loading' ? 'block' : 'none';
+  document.getElementById('stateResult').style.display = s === 'result' ? 'block' : 'none';
 }
 
-// ─── VERIFY ───
-async function doVerify() {
-  const code = codeInput.value.trim();
-  if (!code) { codeInput.focus(); return; }
-
-  const btn = document.getElementById('verifyBtn');
-  const resultEl = document.getElementById('result');
-
-  btn.disabled = true;
-  btn.innerHTML = '<div class="spinner"></div>';
-
-  resultEl.style.display = 'none';
-  resultEl.innerHTML = '';
-
+async function doVerify(code) {
+  showState('loading');
   try {
     const res = await fetch('/api/verify', {
       method: 'POST',
@@ -752,98 +547,93 @@ async function doVerify() {
     renderResult(data);
   } catch (err) {
     renderResult({ valid: false, error: 'network' });
-  } finally {
-    btn.disabled = false;
-    btn.innerHTML = \`
-      <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <span>\${t('v.btn')}</span>
-    \`;
   }
 }
 
 function renderResult(data) {
-  const resultEl = document.getElementById('result');
-  resultEl.style.display = 'block';
-  resultEl.className = 'visible';
+  const el = document.getElementById('stateResult');
 
   if (data.error && data.error !== 'network') {
-    resultEl.innerHTML = \`
-      <div class="result-error">
+    el.innerHTML = \`
+      <div class="result-card card-error">
         <div class="result-top">
-          <div class="result-badge badge-error">⚠️</div>
+          <div class="result-icon icon-warn">⚠️</div>
           <div>
-            <div class="result-title error-title">\${t('v.error.title')}</div>
-            <div class="result-subtitle">\${t('v.error.sub')}</div>
+            <div class="result-title col-warn">\${t('v.error.title')}</div>
+            <div class="result-sub">\${t('v.error.sub')}</div>
           </div>
         </div>
       </div>\`;
+    showState('result');
     return;
   }
 
   if (data.valid) {
-    const issuedFormatted = data.issued_at
-      ? new Date(data.issued_at).toLocaleDateString(currentLang === 'zh' ? 'zh-CN' : currentLang === 'ar' ? 'ar-SA' : 'en-US', { year: 'numeric', month: 'short', day: 'numeric' })
+    const issued = data.issued_at
+      ? new Date(data.issued_at).toLocaleDateString(
+          currentLang === 'zh' ? 'zh-CN' : currentLang === 'ar' ? 'ar-SA' : 'en-US',
+          { year: 'numeric', month: 'short', day: 'numeric' })
       : '—';
-    const scanCount = data.scan_count || 1;
-    const highScans = scanCount > 50;
-
-    resultEl.innerHTML = \`
-      <div class="result-authentic">
+    const scans = data.scan_count || 1;
+    el.innerHTML = \`
+      <div class="result-card card-authentic">
         <div class="result-top">
-          <div class="result-badge badge-authentic">✅</div>
+          <div class="result-icon icon-ok">✅</div>
           <div>
-            <div class="result-title authentic-title">\${t('v.authentic.title')}</div>
-            <div class="result-subtitle">\${t('v.authentic.sub')}</div>
+            <div class="result-title col-ok">\${t('v.authentic.title')}</div>
+            <div class="result-sub">\${t('v.authentic.sub')}</div>
           </div>
         </div>
         <div class="detail-grid">
-          <div class="detail-item">
+          <div>
             <div class="detail-key">\${t('v.detail.code')}</div>
-            <div class="detail-val">\${data.code || '—'}</div>
+            <div class="detail-val code-mono">\${data.code || '—'}</div>
           </div>
-          <div class="detail-item">
+          <div>
             <div class="detail-key">\${t('v.detail.product')}</div>
             <div class="detail-val">\${data.product_name || '—'}</div>
           </div>
-          <div class="detail-item">
+          <div>
             <div class="detail-key">\${t('v.detail.maker')}</div>
             <div class="detail-val">\${data.manufacturer || '—'}</div>
           </div>
-          <div class="detail-item">
+          <div>
             <div class="detail-key">\${t('v.detail.issued')}</div>
-            <div class="detail-val">\${issuedFormatted}</div>
+            <div class="detail-val">\${issued}</div>
           </div>
         </div>
-        <div class="scan-count-badge">
-          📡 \${t('v.detail.scans')}: \${scanCount}
-        </div>
-        \${highScans ? \`<div class="scan-warning">\${t('v.scanWarn')}</div>\` : ''}
+        <div class="scan-badge">📡 \${t('v.detail.scans')}: \${scans}</div>
+        \${scans > 50 ? \`<div class="scan-warning">\${t('v.scanWarn')}</div>\` : ''}
       </div>\`;
   } else {
-    resultEl.innerHTML = \`
-      <div class="result-fake">
+    el.innerHTML = \`
+      <div class="result-card card-fake">
         <div class="result-top">
-          <div class="result-badge badge-fake">❌</div>
+          <div class="result-icon icon-bad">❌</div>
           <div>
-            <div class="result-title fake-title">\${t('v.fake.title')}</div>
-            <div class="result-subtitle">\${t('v.fake.sub')}</div>
+            <div class="result-title col-bad">\${t('v.fake.title')}</div>
+            <div class="result-sub">\${t('v.fake.sub')}</div>
           </div>
         </div>
-        \${data.code ? \`<div class="detail-grid"><div class="detail-item"><div class="detail-key">\${t('v.detail.code')}</div><div class="detail-val">\${data.code}</div></div></div>\` : ''}
+        \${data.code ? \`
+        <div class="detail-grid">
+          <div>
+            <div class="detail-key">\${t('v.detail.code')}</div>
+            <div class="detail-val code-mono">\${data.code}</div>
+          </div>
+        </div>\` : ''}
       </div>\`;
   }
-
-  resultEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  showState('result');
 }
 
-// ─── INIT ───
+// INIT
 applyLang(currentLang);
-
-// Auto-verify if code pre-filled from URL
 const preCode = '${safeCode}';
 if (preCode) {
-  clearBtn.classList.add('visible');
-  setTimeout(() => doVerify(), 600);
+  doVerify(preCode);
+} else {
+  showState('waiting');
 }
 </script>
 </body>
