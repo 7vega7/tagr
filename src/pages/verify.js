@@ -1,4 +1,4 @@
-// BETAG Verify Page
+// TAGR Verify Page
 
 export function getVerifyPage(initialCode = '') {
   const safeCode = initialCode.replace(/[<>"'&]/g, '');
@@ -7,8 +7,8 @@ export function getVerifyPage(initialCode = '') {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BETAG — Verify Label Authenticity</title>
-  <meta name="description" content="Verify the authenticity of your BETAG NFC-protected product." />
+  <title>TAGR — Verify Label Authenticity</title>
+  <meta name="description" content="Verify the authenticity of your TAGR NFC-protected product." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
@@ -475,7 +475,7 @@ export function getVerifyPage(initialCode = '') {
 <div class="bg-grid"></div>
 
 <nav>
-  <a href="/" class="logo">BETAG</a>
+  <a href="/" class="logo">TAGR</a>
   <div class="nav-right">
     <a href="/" class="nav-link" data-i18n="nav.home">← Home</a>
     <div class="lang-selector">
@@ -500,7 +500,7 @@ export function getVerifyPage(initialCode = '') {
     <div class="verify-header">
       <div class="verify-icon">📡</div>
       <h1 data-i18n="v.title">Verify Authenticity</h1>
-      <p data-i18n="v.sub">Enter the code from your BETAG NFC label to confirm it is genuine.</p>
+      <p data-i18n="v.sub">Enter the code from your TAGR NFC label to confirm it is genuine.</p>
     </div>
 
     <div class="verify-card">
@@ -546,8 +546,8 @@ export function getVerifyPage(initialCode = '') {
 </main>
 
 <footer>
-  <a href="/" class="footer-logo">BETAG</a>
-  <span class="footer-copy" data-i18n="footer.copy">© 2025 BETAG. All rights reserved.</span>
+  <a href="/" class="footer-logo">TAGR</a>
+  <span class="footer-copy" data-i18n="footer.copy">© 2025 TAGR. All rights reserved.</span>
 </footer>
 
 <script>
@@ -556,16 +556,16 @@ const i18n = {
   en: {
     "nav.home": "← Home",
     "v.title": "Verify Authenticity",
-    "v.sub": "Enter the code from your BETAG NFC label to confirm it is genuine.",
+    "v.sub": "Enter the code from your TAGR NFC label to confirm it is genuine.",
     "v.inputLabel": "Label Code",
     "v.btn": "Verify Label",
     "v.or": "or scan via NFC",
     "v.nfcTitle": "Use Your Phone",
     "v.nfcDesc": "Tap any NFC-enabled smartphone directly to the label. Your browser will open this page automatically with the code pre-filled.",
     "v.authentic.title": "Authentic Product",
-    "v.authentic.sub": "This BETAG label is registered and valid.",
+    "v.authentic.sub": "This TAGR label is registered and valid.",
     "v.fake.title": "Not Recognized",
-    "v.fake.sub": "This code was not found in the BETAG database. This product may be counterfeit.",
+    "v.fake.sub": "This code was not found in the TAGR database. This product may be counterfeit.",
     "v.error.title": "Verification Error",
     "v.error.sub": "Could not complete the verification. Please try again.",
     "v.detail.code": "Label Code",
@@ -574,21 +574,21 @@ const i18n = {
     "v.detail.issued": "Issued",
     "v.detail.scans": "Total Scans",
     "v.scanWarn": "⚠️ This label has been scanned many times. If you did not expect this, the product may have exchanged hands or been reused.",
-    "footer.copy": "© 2025 BETAG. All rights reserved.",
+    "footer.copy": "© 2025 TAGR. All rights reserved.",
   },
   id: {
     "nav.home": "← Beranda",
     "v.title": "Verifikasi Keaslian",
-    "v.sub": "Masukkan kode dari label NFC BETAG Anda untuk memastikan keasliannya.",
+    "v.sub": "Masukkan kode dari label NFC TAGR Anda untuk memastikan keasliannya.",
     "v.inputLabel": "Kode Label",
     "v.btn": "Verifikasi Label",
     "v.or": "atau pindai via NFC",
     "v.nfcTitle": "Gunakan Ponsel Anda",
     "v.nfcDesc": "Ketuk ponsel NFC langsung ke label. Browser Anda akan membuka halaman ini secara otomatis dengan kode terisi.",
     "v.authentic.title": "Produk Asli",
-    "v.authentic.sub": "Label BETAG ini terdaftar dan valid.",
+    "v.authentic.sub": "Label TAGR ini terdaftar dan valid.",
     "v.fake.title": "Tidak Dikenali",
-    "v.fake.sub": "Kode ini tidak ditemukan di database BETAG. Produk ini mungkin palsu.",
+    "v.fake.sub": "Kode ini tidak ditemukan di database TAGR. Produk ini mungkin palsu.",
     "v.error.title": "Kesalahan Verifikasi",
     "v.error.sub": "Verifikasi tidak dapat diselesaikan. Silakan coba lagi.",
     "v.detail.code": "Kode Label",
@@ -597,21 +597,21 @@ const i18n = {
     "v.detail.issued": "Diterbitkan",
     "v.detail.scans": "Total Pemindaian",
     "v.scanWarn": "⚠️ Label ini telah dipindai berkali-kali. Jika Anda tidak mengharapkan ini, produk mungkin telah berpindah tangan.",
-    "footer.copy": "© 2025 BETAG. Semua hak dilindungi.",
+    "footer.copy": "© 2025 TAGR. Semua hak dilindungi.",
   },
   zh: {
     "nav.home": "← 首页",
     "v.title": "验证真实性",
-    "v.sub": "输入您的 BETAG NFC 标签上的代码以确认其真实性。",
+    "v.sub": "输入您的 TAGR NFC 标签上的代码以确认其真实性。",
     "v.inputLabel": "标签代码",
     "v.btn": "验证标签",
     "v.or": "或通过 NFC 扫描",
     "v.nfcTitle": "使用您的手机",
     "v.nfcDesc": "将任何支持 NFC 的智能手机直接点击标签，浏览器将自动打开此页面并预填代码。",
     "v.authentic.title": "正品",
-    "v.authentic.sub": "此 BETAG 标签已注册且有效。",
+    "v.authentic.sub": "此 TAGR 标签已注册且有效。",
     "v.fake.title": "未识别",
-    "v.fake.sub": "在 BETAG 数据库中未找到此代码。此产品可能是假冒品。",
+    "v.fake.sub": "在 TAGR 数据库中未找到此代码。此产品可能是假冒品。",
     "v.error.title": "验证错误",
     "v.error.sub": "无法完成验证，请重试。",
     "v.detail.code": "标签代码",
@@ -620,21 +620,21 @@ const i18n = {
     "v.detail.issued": "发行时间",
     "v.detail.scans": "总扫描次数",
     "v.scanWarn": "⚠️ 此标签已被多次扫描。如果您未预期此情况，产品可能已易手或被重复使用。",
-    "footer.copy": "© 2025 BETAG。保留所有权利。",
+    "footer.copy": "© 2025 TAGR。保留所有权利。",
   },
   ar: {
     "nav.home": "→ الرئيسية",
     "v.title": "التحقق من الأصالة",
-    "v.sub": "أدخل الرمز من ملصق NFC الخاص بـ BETAG للتأكد من أصالته.",
+    "v.sub": "أدخل الرمز من ملصق NFC الخاص بـ TAGR للتأكد من أصالته.",
     "v.inputLabel": "رمز الملصق",
     "v.btn": "التحقق من الملصق",
     "v.or": "أو امسح عبر NFC",
     "v.nfcTitle": "استخدم هاتفك",
     "v.nfcDesc": "انقر بأي هاتف ذكي يدعم NFC مباشرة على الملصق. سيفتح متصفحك هذه الصفحة تلقائياً مع ملء الرمز مسبقاً.",
     "v.authentic.title": "منتج أصلي",
-    "v.authentic.sub": "ملصق BETAG هذا مسجل وصالح.",
+    "v.authentic.sub": "ملصق TAGR هذا مسجل وصالح.",
     "v.fake.title": "غير معروف",
-    "v.fake.sub": "لم يتم العثور على هذا الرمز في قاعدة بيانات BETAG. قد يكون هذا المنتج مزوراً.",
+    "v.fake.sub": "لم يتم العثور على هذا الرمز في قاعدة بيانات TAGR. قد يكون هذا المنتج مزوراً.",
     "v.error.title": "خطأ في التحقق",
     "v.error.sub": "تعذر إتمام التحقق. يرجى المحاولة مرة أخرى.",
     "v.detail.code": "رمز الملصق",
@@ -643,21 +643,21 @@ const i18n = {
     "v.detail.issued": "تاريخ الإصدار",
     "v.detail.scans": "إجمالي المسح",
     "v.scanWarn": "⚠️ تم مسح هذا الملصق عدة مرات. إذا لم تتوقع ذلك، فقد يكون المنتج انتقل من يد لأخرى.",
-    "footer.copy": "© 2025 BETAG. جميع الحقوق محفوظة.",
+    "footer.copy": "© 2025 TAGR. جميع الحقوق محفوظة.",
   },
   fr: {
     "nav.home": "← Accueil",
     "v.title": "Vérifier l'authenticité",
-    "v.sub": "Saisissez le code de votre étiquette NFC BETAG pour confirmer qu'elle est authentique.",
+    "v.sub": "Saisissez le code de votre étiquette NFC TAGR pour confirmer qu'elle est authentique.",
     "v.inputLabel": "Code de l'étiquette",
     "v.btn": "Vérifier l'étiquette",
     "v.or": "ou scanner via NFC",
     "v.nfcTitle": "Utilisez votre téléphone",
     "v.nfcDesc": "Approchez un smartphone NFC de l'étiquette. Votre navigateur ouvrira cette page automatiquement avec le code pré-rempli.",
     "v.authentic.title": "Produit authentique",
-    "v.authentic.sub": "Cette étiquette BETAG est enregistrée et valide.",
+    "v.authentic.sub": "Cette étiquette TAGR est enregistrée et valide.",
     "v.fake.title": "Non reconnu",
-    "v.fake.sub": "Ce code n'a pas été trouvé dans la base de données BETAG. Ce produit pourrait être contrefait.",
+    "v.fake.sub": "Ce code n'a pas été trouvé dans la base de données TAGR. Ce produit pourrait être contrefait.",
     "v.error.title": "Erreur de vérification",
     "v.error.sub": "La vérification n'a pas pu être complétée. Veuillez réessayer.",
     "v.detail.code": "Code de l'étiquette",
@@ -666,7 +666,7 @@ const i18n = {
     "v.detail.issued": "Émis le",
     "v.detail.scans": "Scans totaux",
     "v.scanWarn": "⚠️ Cette étiquette a été scannée plusieurs fois. Si vous ne l'attendiez pas, le produit a peut-être changé de mains.",
-    "footer.copy": "© 2025 BETAG. Tous droits réservés.",
+    "footer.copy": "© 2025 TAGR. Tous droits réservés.",
   }
 };
 const langMeta = {
@@ -676,14 +676,14 @@ const langMeta = {
   ar: { flag: '🇸🇦', code: 'AR' },
   fr: { flag: '🇫🇷', code: 'FR' },
 };
-let currentLang = localStorage.getItem('betag_lang') || 'en';
+let currentLang = localStorage.getItem('TAGR_lang') || 'en';
 
 function t(key) { return (i18n[currentLang] && i18n[currentLang][key]) || key; }
 
 function applyLang(lang) {
   if (!i18n[lang]) return;
   currentLang = lang;
-  localStorage.setItem('betag_lang', lang);
+  localStorage.setItem('TAGR_lang', lang);
   document.documentElement.lang = lang;
   document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
   document.querySelectorAll('[data-i18n]').forEach(el => {
