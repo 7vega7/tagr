@@ -72,6 +72,8 @@ export async function handleVerifyAPI(request, env, corsHeaders) {
           product_name: label.product_name || null,
           manufacturer: label.manufacturer || null,
           issued_at: label.issued_at || null,
+          serial_number: label.serial_number || null,
+          manufactured_at: label.manufactured_at || null,
           scan_count: (label.scan_count || 0) + 1,
         }),
         { headers: { 'Content-Type': 'application/json', ...corsHeaders } }
@@ -89,4 +91,5 @@ export async function handleVerifyAPI(request, env, corsHeaders) {
       { status: 500, headers: { 'Content-Type': 'application/json', ...corsHeaders } }
     );
   }
+}
 }
