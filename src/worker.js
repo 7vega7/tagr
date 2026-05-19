@@ -5,6 +5,18 @@ import { getLandingPage } from './pages/landing.js';
 import { getVerifyPage } from './pages/verify.js';
 import { handleVerifyAPI } from './api/verify.js';
 
+// Decode Base64URL to plain code
+function decodeToken(t) {
+  try {
+    // Base64URL → Base64 → string
+    const base64 = t.replace(/-/g, '+').replace(/_/g, '/');
+    const decoded = atob(base64);
+    return decoded.toUpperCase();
+  } catch {
+    return null;
+  }
+}
+
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
@@ -34,7 +46,17 @@ export default {
     }
 
     if (path === '/verify' || path === '/verify.html') {
-      const code = url.searchParams.get('code') || '';
+      // Support both ?t=encoded (new) and ?code=plain (legacy)
+      let code = '';
+      const t = url.searchParams.get('t');
+      const plainCode = url.searchParams.get('code');
+
+      if (t) {
+        code = decodeToken(t) || '';
+      } else if (plainCode) {
+        code = plainCode;
+      }
+
       return new Response(getVerifyPage(code), {
         headers: { 'Content-Type': 'text/html;charset=UTF-8' },
       });
