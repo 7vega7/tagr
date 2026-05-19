@@ -1,6 +1,6 @@
-# BETAG — NFC Anti-Counterfeiting Label Platform
+# TAGR — NFC Anti-Counterfeiting Label Platform
 
-A Cloudflare Workers website for BETAG's NFC-based anti-counterfeiting service.
+A Cloudflare Workers website for TAGR's NFC-based anti-counterfeiting service.
 
 ## Pages
 
@@ -31,8 +31,8 @@ A Cloudflare Workers website for BETAG's NFC-based anti-counterfeiting service.
 ### 2. Clone and install
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/betag.git
-cd betag
+git clone https://github.com/YOUR_USERNAME/tagr.git
+cd tagr
 npm install
 ```
 
@@ -129,7 +129,7 @@ npm run dev
 ## 📁 Project Structure
 
 ```
-betag/
+tagr/
 ├── src/
 │   ├── worker.js          # Main Cloudflare Workers entry point (routing)
 │   ├── pages/
