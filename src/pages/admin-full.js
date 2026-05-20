@@ -1,5 +1,5 @@
 // TAGR Admin Panel — Full
-import { getBaseStyles, getI18nJS } from '../lib/shared.js';
+import { getBaseStyles, getI18nJS } from './shared_inline.js';
 
 export function getAdminFullPage() {
   return `<!DOCTYPE html>

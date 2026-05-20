@@ -1,5 +1,5 @@
 // TAGR Orders Page
-import { getBaseStyles, getI18nJS } from '../lib/shared.js';
+import { getBaseStyles, getI18nJS } from './shared_inline.js';
 
 export function getOrdersPage() {
   return `<!DOCTYPE html>

@@ -1,5 +1,5 @@
 // TAGR Auth Pages — Login & Register
-import { getBaseStyles, getI18nJS, getHeadHTML } from '../lib/shared.js';
+import { getBaseStyles, getI18nJS, getHeadHTML } from './shared_inline.js';
 
 export function getLoginPage() {
   return getHeadHTML('TAGR — Sign In') + `
